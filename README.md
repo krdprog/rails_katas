@@ -4,15 +4,15 @@
 
 https://github.com/krdprog/rails_katas - это репозиторий с катами Rails.
 
-### Список Rails Katas
+## Список Rails Katas
 
-- [Rails kata #001 - создание сущности в Rails](https://github.com/krdprog/rails_katas/blob/master/rails_kata_001.md)
+- [Rails Kata 001 - создание сущности в Rails](https://github.com/krdprog/rails_katas/blob/master/rails_kata_001.md)
 
-### Contributors
+## Contributors
 
 У вас есть идеи для ката по Rails? Отправляйте свои пулл-реквесты или пишите на почту info@krdprog.ru
 
-# Author
+## Author
 
 @krdprog - Краснодарский программист (Алексей Цаплин-Купайсинов)
 
