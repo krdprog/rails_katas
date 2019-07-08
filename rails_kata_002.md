@@ -12,16 +12,16 @@ rails g model Comment author:string body:text post:references
 rake db:migrate
 ```
 
-2. /models/project.rb
+2. /app/models/project.rb
 
 ```ruby
 has_many :comments, dependent: :destroy
 ```
 
-3. /models/comment.rb
+3. /app/models/comment.rb
 
 ```ruby
-belongs_to :posts
+belongs_to :post
 ```
 
 4. /config/routes.rb
@@ -38,31 +38,33 @@ end
 rails g controller Comments
 ```
 
-6. /comments_controller.rb
+6. /app/controllers/comments_controller.rb
 
 ```ruby
-def create
-  @post = Post.find(params[:post_id])
-  @post.comments.create(comment_params)
+class CommentsController < ApplicationController
+  def create
+    @post = Post.find(params[:post_id])
+    @post.comments.create(comment_params)
 
-  redirect_to post_path(@post)
-end
+    redirect_to post_path(@post)
+  end
 
-def destroy
-  @post = Post.find(params[:post_id])
-  @post.comments.find(params[:id]).destroy
+  def destroy
+    @post = Post.find(params[:post_id])
+    @post.comments.find(params[:id]).destroy
 
-  redirect_to post_path(@post)
-end
+    redirect_to post_path(@post)
+  end
 
-private
+  private
 
-def comment_params
-  params.require(:comment).permit(:author, :body)
+  def comment_params
+    params.require(:comment).permit(:author, :body)
+  end
 end
 ```
 
-7. show.html.erb for post
+7. Add to /app/views/posts/show.html.erb:
 
 ```ruby
 <h3>Comments:</h3>
